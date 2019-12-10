@@ -9,23 +9,23 @@
                 <tr>
                     <td class="border-0">
                         <sub><i>ID#</i></sub>
-                        <input type="text" ref="idNum" class="form-control" placeholder="Enter Your ID#" v-bind:value="idNo">
+                        <input type="text" ref="idNum" class="form-control" placeholder="Enter Your ID#" v-model="idNo">
                     </td>
                 </tr>
                 <tr>
                     <td class="border-0">
                         <sub><i>Firstname</i></sub>
-                        <input type="text" ref="fName" class="form-control" placeholder="Enter Your Firstname" v-bind:value="fN">
+                        <input type="text" ref="fName" class="form-control" placeholder="Enter Your Firstname" v-model="fN">
                     </td>
                 </tr>
                 <tr>
                     <td class="border-0"> 
                         <sub><i>Lastname</i></sub>
-                        <input type="text" ref="lName" class="form-control" placeholder="Enter Your Lastname" v-bind:value="lN">
+                        <input type="text" ref="lName" class="form-control" placeholder="Enter Your Lastname" v-model="lN">
                     </td>
                 </tr>
                 <tr>
-                    <td><button ref="add" class="btn btn-info" v-on:click="addData" v-bind:class="disableButton"> Add </button></td>
+                    <td><button ref="add" class="btn btn-info" v-on:click="addData" v-bind:disabled="disableSubmitButton"> Add </button></td>
                 </tr>
                 <tr>
                     <!--- test verify data is fetched. Goes to database later -->
@@ -58,18 +58,12 @@ export default {
 
     },
     computed: {
-    
-    disableButton: function (){
-        if(!(this.idNo.length > 3 && this.fN.length > 5 && this.lN.length))
-        {
-            return this.$refs.add.disabled
-        }
-        else{
-            return this.$refs.add.enabled
+        disableSubmitButton: function() {
+            return  !(this.idNo.length > 3 && this.fN.length > 5 && this.lN.length > 5)
         }
     }
-}
-}
+
+} 
 </script>
 
 
