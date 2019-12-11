@@ -8,24 +8,24 @@
                 </tr>
                 <tr>
                     <td class="border-0">
-                        <sub><i>ID#</i></sub>
-                        <input type="text" ref="idNum" class="form-control" placeholder="Enter Your ID#" v-bind:value="idNo">
+                        <sub>ID#&nbsp;<i>not less than 3 characters</i></sub>
+                        <input type="text" ref="idNum" class="form-control" placeholder="Enter Your ID#" v-model="idNo">
                     </td>
                 </tr>
                 <tr>
                     <td class="border-0">
-                        <sub><i>Firstname</i></sub>
-                        <input type="text" ref="fName" class="form-control" placeholder="Enter Your Firstname" v-bind:value="fN">
+                        <sub>Firstname&nbsp;<i>not less than 5 characters</i></sub>
+                        <input type="text" ref="fName" class="form-control" placeholder="Enter Your Firstname" v-model="fN">
                     </td>
                 </tr>
                 <tr>
                     <td class="border-0"> 
-                        <sub><i>Lastname</i></sub>
-                        <input type="text" ref="lName" class="form-control" placeholder="Enter Your Lastname" v-bind:value="lN">
+                        <sub>Lastname&nbsp;<i>not less than 5 characters</i></sub>
+                        <input type="text" ref="lName" class="form-control" placeholder="Enter Your Lastname" v-model="lN">
                     </td>
                 </tr>
                 <tr>
-                    <td><button ref="add" class="btn btn-info" v-on:click="addData" v-bind:class="disableButton"> Add </button></td>
+                    <td id="regBtn"><button ref="add" class="btn btn-info regBtn" v-on:click="addData" v-bind:disabled ="disableButton"> Register </button></td>
                 </tr>
                 <tr>
                     <!--- test verify data is fetched. Goes to database later -->
@@ -51,22 +51,24 @@ export default {
     },
     methods:{
       addData: function(){
-          this.idNo = this.$refs.idNum.value
-          this.fN = this.$refs.lName.value
-          this.lN = this.$refs.fName.value
+          
+
+          //emit the function startQuiz on the Quiz component
+            this.$root.$emit('Quiz')
+
+          //clear input boxes
+          this.$refs.idNum.value = ""
+          this.$refs.lName.value = ""
+          this.$refs.fName.value = ""
       }
 
     },
     computed: {
     
     disableButton: function (){
-        if(!(this.idNo.length > 3 && this.fN.length > 5 && this.lN.length))
-        {
-            return this.$refs.add.disabled
-        }
-        else{
-            return this.$refs.add.enabled
-        }
+     
+     return !(this.idNo.length > 3 && this.fN.length > 5 && this.lN.length > 5)
+        
     }
 }
 }
@@ -92,5 +94,8 @@ td{
 th{
     background-color: rgb(42, 79, 114);
     color:white;
+}
+#regBtn{
+    text-align: right;
 }
 </style>
