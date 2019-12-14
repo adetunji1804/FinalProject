@@ -20,8 +20,23 @@
     <!-- result message phase -->
   <div v-if="resultsStage">
     <div id="result">
-      <h4>You got {{correct}} right, out of {{questions.length}} questions.</h4> 
-      <h4>Your percentage: {{perc}}%.</h4>
+      <img id="imgz" src="@/assets/blank.jpg" width="70">
+      <p>
+        <table class="table table-hover info">
+          <tr><th>#ID:</th> <td>A0124</td></tr>
+          <tr><th>Question[total]:</th> <td>{{questions.length}}</td></tr>
+          <tr><th>Gotten Correct:</th> <td> {{correct}}</td></tr>
+          <tr><th>Score[%]:</th> <td>{{perc}}</td></tr>
+        </table>
+      </p>
+      <div>
+        <table class="table table-hover info">
+          <tr> 
+            <td><button class="btn btn-info" @click="updateData">Update Record</button> </td> 
+            <td><button class="btn btn-warning">Exit Application</button> </td> 
+          </tr>
+           </table>
+      </div>
     </div>
   </div>
 </div>
@@ -88,15 +103,14 @@ export default {
       });
       this.perc = ((this.correct / this.questions.length)*100).toFixed(2);
      //console.log(this.correct+' '+this.perc);
-    }
-
+    },
+   
     },
   
   mounted:function(){
       this.$root.$on('Quiz', () =>{
         this.startQuiz()
-      })
-        
+      })    
   }
     
 }
@@ -106,11 +120,26 @@ export default {
 #quiz-div{
   align-content: center;
 }#result{
-  width:450px;
-  min-height:300px;
-  padding-top:100px;
+  width:400px;
+  min-height:350px;
+  padding:5px;
   border:1px solid grey;
   margin-left: 350px;
   margin-top:50px;
+}
+#result.imgz{
+  
+}
+#img{
+  top:1px;
+  left:1px;
+  position:absolute;
+}
+.info{
+  margin-left: 20px;
+  width: 90%;
+}
+th{
+  text-align:left;
 }
 </style>
