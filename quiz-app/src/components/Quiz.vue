@@ -19,21 +19,25 @@
 
     <!-- result message phase -->
   <div v-if="resultsStage">
-    <div id="result">
-      <img id="imgz" src="@/assets/blank.jpg" width="70">
+    <div class="result">
       <p>
+        <img class="imgz" src="@/assets/blank.jpg" width="60">
         <table class="table table-hover info">
-          <tr><th>#ID:</th> <td>A0124</td></tr>
-          <tr><th>Question[total]:</th> <td>{{questions.length}}</td></tr>
-          <tr><th>Gotten Correct:</th> <td> {{correct}}</td></tr>
-          <tr><th>Score[%]:</th> <td>{{perc}}</td></tr>
+          <tr><th>#ID:</th> <td>{{ id }}</td></tr>
+          <tr><th>Question [total]:</th> <td>{{questions.length}}</td></tr>
+          <tr><th>Answered Correct:</th> <td> {{correct}}</td></tr>
+          <tr><th>Scores [%]:</th> <td>{{perc}}</td></tr>
         </table>
       </p>
       <div>
         <table class="table table-hover info">
           <tr> 
-            <td><button class="btn btn-info" @click="updateData">Update Record</button> </td> 
-            <td><button class="btn btn-warning">Exit Application</button> </td> 
+            <td align="right"><button class="btn btn-info" @click="updateData">Update Score</button>
+
+            <!--  <router-link to="/result">-->
+                <button class="btn btn-success" style="margin-left:5px"> View Records </button>
+             <!-- </router-link> -->
+            </td> 
           </tr>
            </table>
       </div>
@@ -45,6 +49,7 @@
 
 <script>
 //import RegisterForm from './components/RegisterForm.vue'
+
 
 export default {
     props: ['url'],
@@ -60,8 +65,10 @@ export default {
       correct: 0,
       perc: null,
       intro: " Each correct answer is 25%. Register to proceed",
+      id:''
         }
     },
+    
     components:{
     //import and registration of components
         'question':() => import('@/components/Question.vue'),
@@ -83,6 +90,7 @@ export default {
         startQuiz() {
           this.introStage = false;
         this.questionStage = true;
+        
      // console.log('test'+JSON.stringify(this.questions[this.currentQuestion]));
       },
       handleAnswer(e) {
@@ -102,15 +110,14 @@ export default {
         if(this.answers[index] === a.answer) this.correct++;        
       });
       this.perc = ((this.correct / this.questions.length)*100).toFixed(2);
-     //console.log(this.correct+' '+this.perc);
-    },
+    }
+    
+    }, 
    
-    },
-  
   mounted:function(){
       this.$root.$on('Quiz', () =>{
         this.startQuiz()
-      })    
+      }) 
   }
     
 }
@@ -119,7 +126,8 @@ export default {
 <style scoped>
 #quiz-div{
   align-content: center;
-}#result{
+}
+#quiz-div.result{
   width:400px;
   min-height:350px;
   padding:5px;
@@ -127,17 +135,15 @@ export default {
   margin-left: 350px;
   margin-top:50px;
 }
-#result.imgz{
-  
-}
-#img{
+
+.imgz{
   top:1px;
   left:1px;
-  position:absolute;
+  position:relative;
 }
 .info{
   margin-left: 20px;
-  width: 90%;
+  width: 60%;
 }
 th{
   text-align:left;

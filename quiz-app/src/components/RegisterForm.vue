@@ -33,12 +33,16 @@
                 </tr>
             </table>
         </form>
+       
+           
+       
+        
     </div>
 </template>
 
 <!-- Script section -->
 
-<script>
+<script> 
 export default {
     name:'RegisterForm',
     data: function(){
@@ -49,17 +53,11 @@ export default {
         lN: ''
         }
     },
-    props:{
-    },
     methods:{
       addData: function(){
      //emit the function startQuiz on the Quiz component
          this.$root.$emit('Quiz')
          this.addStudent() //call function to add name to database
-        //clear values in variables
-           // this.idNo = ""
-           // this.fN = ""
-            //this.lN = ""
       },
       addStudent:function(){
              let student= { //create student object 
@@ -81,8 +79,9 @@ export default {
         //check if input button has the range value specify
     disableButton: function (){
      return !(this.idNo.length > 2 && this.fN.length > 3 && this.lN.length > 3)
-    }
+    }, 
 }
+
 }
 </script>
 

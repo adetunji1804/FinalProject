@@ -1,4 +1,3 @@
-<template>
 <!--
     Author: Adetunji "TJ"
     Project: Quiz App
@@ -19,6 +18,8 @@
         Vue JS 2 Tutorial #27 - Slots
         Vue JS 2 Tutorial #24 - Events (child to parent)
   -->
+
+<template>
   <div id="app">
     <!--default component use to display the Home page Header -->
     <HelloWorld msg="The Quiz App"/>
