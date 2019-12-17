@@ -8,24 +8,40 @@
                 </tr>
                 <tr>
                     <td class="border-0">
+<<<<<<< HEAD
                         <sub>ID#&nbsp;<i>not less than 3 characters</i></sub>
+=======
+                        <sub><i>ID#</i></sub>
+>>>>>>> 153ae6bbf3b23b29d5863bf983a1c35cf458e59a
                         <input type="text" ref="idNum" class="form-control" placeholder="Enter Your ID#" v-model="idNo">
                     </td>
                 </tr>
                 <tr>
                     <td class="border-0">
+<<<<<<< HEAD
                         <sub>Firstname&nbsp;<i>not less than 4 characters</i></sub>
+=======
+                        <sub><i>Firstname</i></sub>
+>>>>>>> 153ae6bbf3b23b29d5863bf983a1c35cf458e59a
                         <input type="text" ref="fName" class="form-control" placeholder="Enter Your Firstname" v-model="fN">
                     </td>
                 </tr>
                 <tr>
                     <td class="border-0"> 
+<<<<<<< HEAD
                         <sub>Lastname&nbsp;<i>not less than 4 characters</i></sub>
+=======
+                        <sub><i>Lastname</i></sub>
+>>>>>>> 153ae6bbf3b23b29d5863bf983a1c35cf458e59a
                         <input type="text" ref="lName" class="form-control" placeholder="Enter Your Lastname" v-model="lN">
                     </td>
                 </tr>
                 <tr>
+<<<<<<< HEAD
                     <td id="regBtn"><button ref="add" class="btn btn-info regBtn" v-on:click="addData" v-bind:disabled ="disableButton"> Register </button></td>
+=======
+                    <td><button ref="add" class="btn btn-info" v-on:click="addData" v-bind:disabled="disableSubmitButton"> Add </button></td>
+>>>>>>> 153ae6bbf3b23b29d5863bf983a1c35cf458e59a
                 </tr>
                 <tr>
                     <!--- test verify data is fetched. Goes to database later -->
@@ -79,6 +95,7 @@ export default {
     }
 },
     computed: {
+<<<<<<< HEAD
         //check if input button has the range value specify
     disableButton: function (){
      return !(this.idNo.length > 2 && this.fN.length > 3 && this.lN.length > 3)
@@ -86,6 +103,14 @@ export default {
 }
 
 }
+=======
+        disableSubmitButton: function() {
+            return  !(this.idNo.length > 3 && this.fN.length > 5 && this.lN.length > 5)
+        }
+    }
+
+} 
+>>>>>>> 153ae6bbf3b23b29d5863bf983a1c35cf458e59a
 </script>
 
     <!-- style section -->
