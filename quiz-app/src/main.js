@@ -3,6 +3,7 @@ import './plugins/bootstrap-vue'
 import App from './App.vue'
 
 import VueRouter from 'vue-router'
+import router from './router'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,10 @@ import StudentAPIService from '@/services/StudentService'
 Vue.config.productionTip = false
 Vue.prototype.$student_api = StudentAPIService
 
+// todo set up routing 
+
+
 new Vue({
   render: h => h(App),
+  router
 }).$mount('#app')
