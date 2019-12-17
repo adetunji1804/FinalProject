@@ -1,15 +1,15 @@
 <template>
 <div id="quiz-div">
   <!-- App intro stage -->
-  <div v-if="introStage">
+  <div v-show="introStage">
     <p>{{ intro }}</p>
-    <div><register-form></register-form>
+    <div><register-form v-on:studentcreated="studentcreated"></register-form>
       </div>
      <!-- <button class="btn btn-primary" @click="startQuiz" id="strBtn">Click to Start</button> -->
   </div>
 
    <!-- Question phase -->
-  <div v-if="questionStage">
+  <div v-show="questionStage">
     <question 
       :question="questions[currentQuestion]"
       v-on:answer="handleAnswer"
@@ -18,7 +18,7 @@
   </div>
 
     <!-- result message phase -->
-  <div v-if="resultsStage">
+  <div v-show="resultsStage">
     <div class="result">
       <p>
         <img class="imgz" src="@/assets/blank.jpg" width="60">
@@ -65,7 +65,8 @@ export default {
       correct: 0,
       perc: null,
       intro: " Each correct answer is 25%. Register to proceed",
-      id:''
+      id:'',
+      student: {}
         }
     },
     
@@ -87,11 +88,24 @@ export default {
         })
     },
     methods:{
+      studentcreated(student) {
+        console.log('created', student)
+        this.id = student.studentID
+        this.student = student 
+      },
         startQuiz() {
           this.introStage = false;
         this.questionStage = true;
         
+        
      // console.log('test'+JSON.stringify(this.questions[this.currentQuestion]));
+      },
+      updateData() {
+        //todo
+        // this.student.score = ?? 
+         this.$student_api.updated(student).then ( () => {}  )
+      
+        
       },
       handleAnswer(e) {
      // console.log('answer event ftw',e);
