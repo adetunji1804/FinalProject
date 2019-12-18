@@ -2,8 +2,8 @@
 
 <div class="set">
   
-<div class="card">
-  <div>
+  <div v-if="question"  class="card">
+    <div>
   <strong>Question {{ questionNumber }}:</strong>
   </div>
       <div class="header">

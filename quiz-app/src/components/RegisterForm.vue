@@ -67,7 +67,10 @@ export default {
              score:0.00 
            }
            //this.students.push(student)
-           this.$student_api.addStudent(student)
+           this.$student_api.addStudent(student).then( ()=>{
+               //console.log('created!', student )
+               this.$emit("studentcreated", student)
+           })
     },
     updateStudents(){
         this.$student_api.getAllStudent().then (students =>{

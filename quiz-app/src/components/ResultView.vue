@@ -7,7 +7,7 @@
                 <th>Lastname</th>
                 <th>Score</th>
             </tr>
-            <tr v-for="student in results.Student" :key="student.index">
+            <tr v-for="student in results" :key="student.id">
                 <td>{{ student.studentID }}</td>
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
