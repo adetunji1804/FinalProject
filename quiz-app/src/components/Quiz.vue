@@ -99,10 +99,13 @@ export default {
         
      // console.log('test'+JSON.stringify(this.questions[this.currentQuestion]));
       },
-      updateData: function(){
-        //todo
-        //this.student.score = this.perc
-       // this.$student_api.updated(student).then( ()=>{})
+
+      updateData: function(student){
+        this.student.score = this.perc
+        this.$student_api.updateStudent(student).then( ()=>{
+          this.Student.score = this.perc
+        })
+          
       },
       handleAnswer(e) {
      // console.log('answer event ftw',e);

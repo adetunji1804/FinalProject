@@ -2,6 +2,8 @@
 import Router from 'vue-router'
 
 //import components from '@/components'
+import ResultView from '@/components/ResultView.vue'
+import Quiz from '@/components/Quiz.vue'
 
 //Vue.use(Router)
 
@@ -11,12 +13,12 @@ export default new Router({
         {
             path: '/result',
             name:'result',
-            component: 'ResultView'
+            component: ResultView
         },
         {
             path: '/home',
             name: 'home',
-            component: 'Quiz'
+            component: Quiz
         }
     ]
 })

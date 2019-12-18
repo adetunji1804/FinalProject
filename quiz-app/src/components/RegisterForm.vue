@@ -71,12 +71,8 @@ export default {
                //console.log('created!', student )
                this.$emit("studentcreated", student)
            })
-    },
-    updateStudents(){
-        this.$student_api.getAllStudent().then (students =>{
-            this.students = students
-        })
     }
+    
 },
     computed: {
         //check if input button has the range value specify
